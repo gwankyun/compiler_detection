@@ -2,6 +2,36 @@
 #ifndef COMPILE_FEATURES_H
 #define COMPILE_FEATURES_H
 
+#ifndef CXX_AUTO_TYPE
+#if defined(_MSC_VER) && _MSC_VER >= 1600 // VS 2010
+#define CXX_AUTO_TYPE
+#elif defined(__clang__) // Clang
+#define CXX_AUTO_TYPE
+#elif defined(__GNUC__) && (__GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC__MINOR__ >= 4)) // GCC 4.4
+#define CXX_AUTO_TYPE
+#endif
+#endif // !CXX_AUTO_TYPE
+
+#ifndef CXX_RIGHT_ANGLE_BRACKETS
+#if defined(_MSC_VER) && _MSC_VER >= 1400 // VS 2005
+#define CXX_RIGHT_ANGLE_BRACKETS
+#elif defined(__clang__) // Clang
+#define CXX_RIGHT_ANGLE_BRACKETS
+#elif defined(__GNUC__) && (__GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC__MINOR__ >= 3)) // GCC 4.3
+#define CXX_RIGHT_ANGLE_BRACKETS
+#endif
+#endif // !CXX_RIGHT_ANGLE_BRACKETS
+
+#ifndef CXX_LONG_LONG_TYPE
+#if defined(_MSC_VER) && _MSC_VER >= 1400 // VS 2005
+#define CXX_LONG_LONG_TYPE
+#elif defined(__clang__) // Clang
+#define CXX_LONG_LONG_TYPE
+#elif defined(__GNUC__) // GCC
+#define CXX_LONG_LONG_TYPE
+#endif
+#endif // !CXX_LONG_LONG_TYPE
+
 #ifndef CXX_NOEXCEPT
 #if defined(_MSC_VER) && _MSC_VER >= 1900 // VS 2015
 #define CXX_NOEXCEPT

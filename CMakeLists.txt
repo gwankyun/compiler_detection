@@ -19,11 +19,10 @@ project(${project})
 
 add_executable(${project} "")
 
-if(${MSVC})
-	target_compile_options(${project} PRIVATE /W4 /MP)
-endif()
+add_compile_options(
+    "$<$<CXX_COMPILER_ID:MSVC>:/W4;/MP>")
 
 target_sources(${project} PRIVATE
-	src/main.cpp include/compile_features.h)
+	src/main.cpp include/compile_features/compile_features.h)
 
 target_include_directories(${project} PRIVATE include)

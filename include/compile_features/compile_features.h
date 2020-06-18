@@ -455,7 +455,15 @@
 
 // Tweaked wording for contextual conversions
 // https://wg21.link/N3323
-// To do
+#ifndef CXX_CONTEXTUAL_CONVERSIONS
+#if CXX_CHECK_VERSION(CXX_MSVC, 1800, 0, 0) // VS 2013
+#define CXX_CONTEXTUAL_CONVERSIONS
+#elif CXX_CHECK_VERSION(CXX_CLANG, 3, 4, 0) // Clang 3.4
+#define CXX_CONTEXTUAL_CONVERSIONS
+#elif CXX_CHECK_VERSION(CXX_GCC, 4, 9, 0) // GCC 4.9
+#define CXX_CONTEXTUAL_CONVERSIONS
+#endif
+#endif // !CXX_CONTEXTUAL_CONVERSIONS
 
 // Binary literals
 // https://wg21.link/N3472
@@ -479,7 +487,7 @@
 
 // Extended constexpr
 // https://wg21.link/N3652
-// To do
+// __cpp_constexpr >= 201304L
 
 // Member initializers and aggregates (NSDMI)
 // https://wg21.link/N3653
@@ -487,19 +495,37 @@
 
 // Clarifying memory allocation (avoiding/fusing allocations)
 // https://wg21.link/N3664
+// CMAKE UNKNOWN FEATURE
 // To do
 
 // [[deprecated]] attribute
 // https://wg21.link/N3760
-// To do
+#ifndef CXX_ATTRIBUTE_DEPRECATED
+#if CXX_CHECK_VERSION(CXX_MSVC, 1900, 0, 0) // VS 2015
+#define CXX_ATTRIBUTE_DEPRECATED
+#elif CXX_CHECK_VERSION(CXX_CLANG, 3, 4, 0) // Clang 3.4
+#define CXX_ATTRIBUTE_DEPRECATED
+#elif CXX_CHECK_VERSION(CXX_GCC, 4, 9, 0) // GCC 4.9
+#define CXX_ATTRIBUTE_DEPRECATED
+#endif
+#endif // !CXX_ATTRIBUTE_DEPRECATED
 
 // Sized deallocation
 // https://wg21.link/N3778
-// To do
+// __cpp_sized_deallocation
 
 // Single quote as digit separator
 // https://wg21.link/N3781
-// To do
+// CMAKE UNKNOWN FEATURE
+#ifndef CXX_DIGIT_SEPARATORS
+#if CXX_CHECK_VERSION(CXX_MSVC, 1900, 0, 0) // VS 2013
+#define CXX_DIGIT_SEPARATORS
+#elif CXX_CHECK_VERSION(CXX_CLANG, 3, 4, 0) // Clang 3.4
+#define CXX_DIGIT_SEPARATORS
+#elif CXX_CHECK_VERSION(CXX_GCC, 5, 0, 0) // GCC 5.0
+#define CXX_DIGIT_SEPARATORS
+#endif
+#endif // !CXX_DIGIT_SEPARATORS
 
 #endif // !COMPILE_FEATURES_H
 

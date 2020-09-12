@@ -1,9 +1,9 @@
 ﻿#include <cstddef> // NULL
-#include "compile_features/compile_features.h"
+#include <compiler_detection.hpp>
 
 int main()
 {
-#ifdef CXX_NULLPTR
+#ifdef FEATURE_NULLPTR
     int* n = nullptr;
 #else
     int* n = NULL;

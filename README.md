@@ -1,35 +1,5 @@
 # compile_features
+
 C++特性測試宏
 
-定義了一組功能測試宏，主要參考[C++ 编译器支持情况表 - cppreference.com](https://zh.cppreference.com/w/cpp/compiler_support)，并且不與[功能特性测试 (C++20) - cppreference.com](https://zh.cppreference.com/w/cpp/feature_test)中定義的功能測試宏重複，即主要面向C++11的特性，支持MSVC、GCC及Clang編譯器，宏命名參考CMake。
-
-# C++11
-- `CXX_VARIADIC_MACROS`
-- `CXX_RIGHT_ANGLE_BRACKETS`
-- `CXX_EXTENDED_FRIEND_DECLARATIONS`
-- `CXX_LONG_LONG_TYPE`
-- `CXX_TYPE_TRAITS`
-- `CXX_AUTO_TYPE`
-- `CXX_EXTERN_TEMPLATES`
-- `CXX_ALIGNAS`
-- `CXX_ALIGNOF`
-- `CXX_DEFAULTED_FUNCTIONS`
-- `CXX_DELETED_FUNCTIONS`
-- `CXX_STRONG_ENUMS`
-- `CXX_ATOMIC_OPERATIONS`
-- `CXX_NULLPTR`
-- `CXX_EXPLICIT_CONVERSIONS`
-- `CXX_INLINE_NAMESPACES`
-- `CXX_TRAILING_RETURN_TYPES`
-- `CXX_UNRESTRICTED_UNIONS`
-- `CXX_EXPRESSION_SFINAE`
-- `CXX_LOCAL_TYPE_TEMPLATE_ARGS`
-- `CXX_THREAD_LOCAL`
-- `CXX_ENUM_FORWARD_DECLARATIONS`
-- `CXX_NOEXCEPT`
-- `CXX_OVERRIDE`
-- `CXX_FINAL`
-# C++14
-- `CXX_CONTEXTUAL_CONVERSIONS`
-- `CXX_ATTRIBUTE_DEPRECATED`
-- `CXX_DIGIT_SEPARATORS`
+直接使用`CMake`的`WriteCompilerDetectionHeader`生成，方便非`CMake`項目使用。

@@ -1,13 +1,8 @@
 ﻿#include <cstddef> // NULL
-#include <compiler_detection.hpp>
+#include <compiler_detection/short.hpp>
 
 int main()
 {
-#ifdef FEATURE_NULLPTR
-    int* n = nullptr;
-#else
-    int* n = NULL;
-#endif // CXX_NULLPTR
-
+    int* i = NULLPTR;
     return 0;
 }

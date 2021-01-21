@@ -20,6 +20,11 @@ write_compiler_detection_header(
   COMPILERS AppleClang Clang GNU MSVC SunPro Intel
   ALLOW_UNKNOWN_COMPILER_VERSIONS
   FEATURES
+    cxx_std_98
+    cxx_std_11
+    cxx_std_14
+    cxx_std_17
+    cxx_std_20
     cxx_aggregate_default_initializers
     cxx_alias_templates
     cxx_alignas
@@ -83,12 +88,21 @@ write_compiler_detection_header(
 set(project compiler_detection)
 project(${project})
 
-add_executable(${project} "")
+add_executable(${project})
 
 add_compile_options(
-    "$<$<CXX_COMPILER_ID:MSVC>:/W4;/MP>")
+  "$<$<CXX_COMPILER_ID:MSVC>:/W4;/MP>;")
+
+set(CompilerDetection_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+find_package(CompilerDetection REQUIRED)
 
 target_sources(${project} PRIVATE
-	src/main.cpp include/compiler_detection.hpp)
+  src/main.cpp
+)
+
+target_link_libraries(${project}
+  PUBLIC
+    CompilerDetection::CompilerDetection)
 
 target_include_directories(${project} PRIVATE include)
+

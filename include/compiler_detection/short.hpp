@@ -65,4 +65,3 @@
 #endif // defined(FEATURE_THREAD_LOCAL) && !defined(THREAD_LOCAL)
 
 #endif // !COMPILER_DETECTION_SHORT_HPP
-

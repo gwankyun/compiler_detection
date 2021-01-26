@@ -1,5 +1,7 @@
 ﻿if(CompilerDetection_ROOT)
-    set(CompilerDetection_INCLUDE_DIRS ${CompilerDetection_ROOT}/include ${CompilerDetection_ROOT}/include/compiler_detection)
+    set(CompilerDetection_INCLUDE_DIRS
+      ${CompilerDetection_ROOT}/include
+      ${CompilerDetection_ROOT}/include/compiler_detection)
     set(CompilerDetection_FOUND TRUE)
     if(NOT TARGET CompilerDetection::CompilerDetection)
       add_library(CompilerDetection_header_only INTERFACE)

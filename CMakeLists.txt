@@ -1,5 +1,5 @@
 ﻿# cmake最低版本
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.19)
 
 # 啟用IDE目錄功能
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -98,6 +98,9 @@ find_package(CompilerDetection REQUIRED)
 
 target_sources(${project} PRIVATE
   src/main.cpp
+  include/compiler_detection.hpp
+  include/compiler_detection/short.hpp
+  cmake/findCompilerDetection.cmake
 )
 
 target_link_libraries(${project}

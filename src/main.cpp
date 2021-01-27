@@ -3,14 +3,13 @@
 #include <vector>
 #include <compiler_detection/short.hpp>
 
-#if FEATURE_COMPILER_CXX_STRONG_ENUMS
+#if COMPAT_COMPILER_CXX_STRONG_ENUMS
 enum class Color
 {
     Red,
     Green,
     Blue
 };
-using ColorEnum = Color;
 #else
 struct Color
 {
@@ -21,15 +20,14 @@ struct Color
         Blue
     };
 };
-typedef Color::Enum ColorEnum;
-#endif // FEATURE_COMPILER_CXX_STRONG_ENUMS
+#endif // COMPAT_COMPILER_CXX_STRONG_ENUMS
 
 int main()
 {
-    ColorEnum red = ColorEnum::Red;
+    STRONG_ENUM(Color) red = Color::Red;
     int* i = NULLPTR;
     std::vector<int> vec{ 1,2,3,4,5 };
-#if FEATURE_COMPILER_CXX_LAMBDAS
+#if COMPAT_COMPILER_CXX_LAMBDAS
     std::find_if(vec.begin(), vec.end(),
         [](const int& i)
         {
@@ -45,6 +43,6 @@ int main()
     };
     CallBack cb;
     std::find_if(vec.begin(), vec.end(), cb);
-#endif // FEATURE_COMPILER_CXX_LAMBDAS
+#endif // COMPAT_COMPILER_CXX_LAMBDAS
     return 0;
 }

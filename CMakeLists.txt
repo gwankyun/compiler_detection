@@ -15,8 +15,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 write_compiler_detection_header(
-  FILE "${CMAKE_CURRENT_SOURCE_DIR}/include/compiler_detection.hpp"
-  PREFIX FEATURE
+  FILE "${CMAKE_CURRENT_SOURCE_DIR}/include/compiler_detection/compiler_detection.h"
+  PREFIX COMPAT
   COMPILERS AppleClang Clang GNU MSVC SunPro Intel
   ALLOW_UNKNOWN_COMPILER_VERSIONS
   FEATURES
@@ -98,6 +98,7 @@ find_package(CompilerDetection REQUIRED)
 
 target_sources(${project} PRIVATE
   src/main.cpp
+  include/compiler_detection/compiler_detection.h
   include/compiler_detection.hpp
   include/compiler_detection/short.hpp
   cmake/findCompilerDetection.cmake

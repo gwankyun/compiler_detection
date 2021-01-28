@@ -1,6 +1,7 @@
 ﻿#include <cstddef> // NULL
 #include <algorithm>
 #include <vector>
+#define OVERRIDE
 #include <compiler_detection/short.hpp>
 
 #if COMPAT_COMPILER_CXX_STRONG_ENUMS

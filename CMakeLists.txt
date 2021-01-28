@@ -88,10 +88,10 @@ write_compiler_detection_header(
 set(project compiler_detection)
 project(${project})
 
-add_executable(${project})
-
 add_compile_options(
-  "$<$<CXX_COMPILER_ID:MSVC>:/W4;/MP>;")
+  "$<$<CXX_COMPILER_ID:MSVC>:/W4;/MP>;/Zc:__cplusplus;")
+
+add_executable(${project})
 
 set(CompilerDetection_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 find_package(CompilerDetection REQUIRED)
@@ -109,4 +109,3 @@ target_link_libraries(${project}
     CompilerDetection::CompilerDetection)
 
 target_include_directories(${project} PRIVATE include)
-

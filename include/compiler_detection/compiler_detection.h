@@ -19,6 +19,7 @@
 #ifdef __cplusplus
 # define COMPAT_COMPILER_IS_Comeau 0
 # define COMPAT_COMPILER_IS_Intel 0
+# define COMPAT_COMPILER_IS_IntelLLVM 0
 # define COMPAT_COMPILER_IS_PathScale 0
 # define COMPAT_COMPILER_IS_Embarcadero 0
 # define COMPAT_COMPILER_IS_Borland 0
@@ -31,6 +32,7 @@
 # define COMPAT_COMPILER_IS_XLClang 0
 # define COMPAT_COMPILER_IS_XL 0
 # define COMPAT_COMPILER_IS_VisualAge 0
+# define COMPAT_COMPILER_IS_NVHPC 0
 # define COMPAT_COMPILER_IS_PGI 0
 # define COMPAT_COMPILER_IS_Cray 0
 # define COMPAT_COMPILER_IS_TI 0
@@ -54,6 +56,10 @@
 #elif defined(__INTEL_COMPILER) || defined(__ICC)
 # undef COMPAT_COMPILER_IS_Intel
 # define COMPAT_COMPILER_IS_Intel 1
+
+#elif (defined(__clang__) && defined(__INTEL_CLANG_COMPILER)) || defined(__INTEL_LLVM_COMPILER)
+# undef COMPAT_COMPILER_IS_IntelLLVM
+# define COMPAT_COMPILER_IS_IntelLLVM 1
 
 #elif defined(__PATHCC__)
 # undef COMPAT_COMPILER_IS_PathScale
@@ -102,6 +108,10 @@
 #elif defined(__IBMCPP__) && !defined(__COMPILER_VER__) && __IBMCPP__ < 800
 # undef COMPAT_COMPILER_IS_VisualAge
 # define COMPAT_COMPILER_IS_VisualAge 1
+
+#elif defined(__NVCOMPILER)
+# undef COMPAT_COMPILER_IS_NVHPC
+# define COMPAT_COMPILER_IS_NVHPC 1
 
 #elif defined(__PGI)
 # undef COMPAT_COMPILER_IS_PGI
